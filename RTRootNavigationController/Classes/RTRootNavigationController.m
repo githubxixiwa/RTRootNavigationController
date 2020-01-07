@@ -139,10 +139,7 @@ __attribute((overloadable)) static inline RTContainerController *RTSafeWrapViewC
 
 
 @implementation RTContainerController
-- (UIRectEdge)preferredScreenEdgesDeferringSystemGestures
-{
-    return self.edge;
-}
+
 + (instancetype)containerControllerWithController:(UIViewController *)controller
 {
     return [[self alloc] initWithController:controller];

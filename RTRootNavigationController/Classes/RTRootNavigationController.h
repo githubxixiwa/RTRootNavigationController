@@ -29,8 +29,6 @@
 
 @interface RTContainerController : UIViewController
 @property (nonatomic, readonly, strong) __kindof UIViewController *contentViewController;
-/* 系统手势延迟 */
-@property(nonatomic ,assign)UIRectEdge edge;
 @end
 
 
