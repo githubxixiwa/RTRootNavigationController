@@ -429,17 +429,6 @@ __attribute((overloadable)) static inline RTContainerController *RTSafeWrapViewC
     [super viewDidLayoutSubviews];
     
     UIViewController *viewController = self.visibleViewController;
-    if (!viewController.rt_hasSetInteractivePop) {
-        BOOL hasSetLeftItem = viewController.navigationItem.leftBarButtonItem != nil;
-        if (self.navigationBarHidden) {
-            viewController.rt_disableInteractivePop = YES;
-        } else if (hasSetLeftItem) {
-            viewController.rt_disableInteractivePop = YES;
-        } else {
-            viewController.rt_disableInteractivePop = NO;
-        }
-        
-    }
     if ([self.parentViewController isKindOfClass:[RTContainerController class]] &&
         [self.parentViewController.parentViewController isKindOfClass:[RTRootNavigationController class]]) {
         [self.rt_navigationController _installsLeftBarButtonItemIfNeededForViewController:viewController];
@@ -569,9 +558,6 @@ __attribute((overloadable)) static inline RTContainerController *RTSafeWrapViewC
 - (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated
 {
     [super setNavigationBarHidden:hidden animated:animated];
-    if (!self.visibleViewController.rt_hasSetInteractivePop) {
-        self.visibleViewController.rt_disableInteractivePop = hidden;
-    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
